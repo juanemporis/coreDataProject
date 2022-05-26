@@ -31,7 +31,31 @@ class ViewController: UIViewController {
     }
 
     @IBAction func add(_ sender: Any) {
-        print("Añadir datos")
+        //print("Añadir datos")
+        
+        //CREAR ALERTA
+        let alert = UIAlertController(title: "Agregar Pais", message: "Añade un pais nuevo", preferredStyle: .alert)
+        alert.addTextField() //Con este codigo se podra agregar el nombre de los paises
+        
+        //CREAR Y CONFIGURAR BOTON DE ALERTA
+        let botonAlerta = UIAlertAction(title: "Añadir", style: .default){ (action) in
+            
+            //RECUPERAR TEXTFIELD DE LA ALERTA (AÑADIR LOS PAISES)
+            let textField = alert.textFields![0]
+            
+            //CREAR OBJETO PAIS
+            let nuevoPais = Pais(context: self.context)
+            nuevoPais.nombre = textField.text
+            
+            //GUARDAR INFORMACION (Añade block do-try-catch)
+            try! self.context.save()
+            
+            //REFRESCAR INFORMACION EN TABLEVIEW
+            self.recuperarDatos()
+        }
+        
+        //AÑADIR BOTON A LA ALERTA Y MOSTRAR LA ALERTA
+        alert.addAction(botonAlerta)
     }
     //SE CREO LA FUNCION RECUPERAR DATOS
     //NOTA: El fetchRequest se obtiene de la clase Pais+CoreDataProperties
@@ -56,14 +80,11 @@ class ViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     
-
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //5.Se le agrego un ! a myCountries para contar cuantos paises tiene
         return myCountries!.count
     }
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
             
@@ -89,6 +110,27 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         print(myCountries![indexPath.row])
     }
-    
+    //6.Añadir funcionalidad de swipe para eliminar
+   //NOTA:trailingSwipeActionsConfigurationForRowAt se encargara de eliminar al hacer swipe a la izquiera de algun nombre de pais
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        //Crear accion de eliminar
+        let accionEliminar = UIContextualAction(style: .destructive, title: "Eliminar") { (action,view,completionHandler) in
+            
+            //Cual pais eliminar?
+            let paisEliminar = self.myCountries![indexPath.row]
+            
+            //Eliminar pais
+            self.context.delete(paisEliminar)
+            
+            //Guardar el cambio de informacion
+            try! self.context.save()
+            
+            //Recargar datos
+            self.recuperarDatos()
+        }
+        return UISwipeActionsConfiguration(actions: [accionEliminar])
+        
+    }
 }
 
