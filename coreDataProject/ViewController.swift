@@ -108,7 +108,40 @@ extension ViewController: UITableViewDelegate {
     
     //5.Se le agrego un ! a myCountries
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(myCountries![indexPath.row])
+       // print(myCountries![indexPath.row])
+        
+        //7.Añadir funcionalidad de editar
+        
+        //Cual pais se editara?
+        let paisEditar = self.myCountries![indexPath.row]
+        
+        //Crear alerta
+        let alert = UIAlertController(title: "Editar pais", message: "Editar pais", preferredStyle: .alert)
+        alert.addTextField()
+        
+        //Recuperar nombre de pais actual de la tabla y agregarla al textField de la alerta
+        let textField = alert.textFields![0]
+        textField.text = paisEditar.nombre
+        
+        //Crear y configurar boton de alerta
+        let botonAlerta = UIAlertAction(title: "Editar", style: .default) { (action) in
+            
+            //Recuperar textField de la alerta
+            let textField = alert.textFields![0]
+            
+            //Editar pais actual con lo que este en el textfield
+            paisEditar.nombre = textField.text
+            
+            //Guardar informacion (añade block do-try-catch)
+            try! self.context.save()
+            
+            //Refrescar informacion en tableView
+            self.recuperarDatos()
+        }
+        //Añadir boton de la alerta y mostrar la alerta
+        alert.addAction(botonAlerta)
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     //6.Añadir funcionalidad de swipe para eliminar
