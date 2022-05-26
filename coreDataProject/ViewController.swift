@@ -56,7 +56,9 @@ class ViewController: UIViewController {
         
         //AÑADIR BOTON A LA ALERTA Y MOSTRAR LA ALERTA
         alert.addAction(botonAlerta)
+        self.present(alert, animated: true,completion: nil)
     }
+    
     //SE CREO LA FUNCION RECUPERAR DATOS
     //NOTA: El fetchRequest se obtiene de la clase Pais+CoreDataProperties
     func recuperarDatos(){
@@ -67,8 +69,6 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
-            tableView.reloadData()
             
         }
         catch{
@@ -87,7 +87,6 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-            
             var cell = tableView.dequeueReusableCell(withIdentifier: "mycell")
             if cell == nil {
                
@@ -95,6 +94,7 @@ extension ViewController: UITableViewDataSource {
                 cell?.textLabel?.font = UIFont.systemFont(ofSize: 20)
                 
             }
+        
         //5.Se le agrego un ! a myCountries y un .nombre para recuperar los nombres de los paises y te lo asignara a cell que es la celda
         cell!.textLabel?.text = myCountries![indexPath.row].nombre
             return cell!
@@ -107,9 +107,10 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
     //5.Se le agrego un ! a myCountries
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(myCountries![indexPath.row])
     }
+    
     //6.Añadir funcionalidad de swipe para eliminar
    //NOTA:trailingSwipeActionsConfigurationForRowAt se encargara de eliminar al hacer swipe a la izquiera de algun nombre de pais
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
