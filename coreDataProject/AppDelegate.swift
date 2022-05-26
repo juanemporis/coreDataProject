@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // CORE DATA STACK
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "coreDataProject")
+        let container = NSPersistentContainer(name: "CoreDataProjectModel")
         container.loadPersistentStores(completionHandler: {
             (storeDescription, error) in
             if let error = error as NSError? {
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     //CORE DATA SAVING SUPPORT
-    func saveContext () {
+      func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

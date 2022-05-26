@@ -26,7 +26,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="gtF-jx-bQW">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="9Qo-R4-xhh" userLabel="+">
+                        <barButtonItem key="rightBarButtonItem" title="Añadir" id="9Qo-R4-xhh" userLabel="+">
                             <connections>
                                 <action selector="add:" destination="BYZ-38-t0r" id="1jV-mW-VpR"/>
                             </connections>

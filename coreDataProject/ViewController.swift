@@ -82,7 +82,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //5.Se le agrego un ! a myCountries para contar cuantos paises tiene
-        return myCountries!.count
+        return myCountries?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
