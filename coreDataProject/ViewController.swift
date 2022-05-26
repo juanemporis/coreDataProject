@@ -38,7 +38,14 @@ class ViewController: UIViewController {
     func recuperarDatos(){
         do {
             self.myCountries = try context.fetch(Pais.fetchRequest())
+            
+            //DispatchQueue es para que el hilo principal de la aplicacion se encargue de mostrar los datos en el TableView
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
             tableView.reloadData()
+            
         }
         catch{
             print("Error recuperando datos")
