@@ -14,6 +14,8 @@
 		C8B38748283EFF4C0066E04F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B38747283EFF4C0066E04F /* Assets.xcassets */; };
 		C8B3874B283EFF4C0066E04F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B38749283EFF4C0066E04F /* LaunchScreen.storyboard */; };
 		C8B38754283F01D60066E04F /* CoreDataProjectModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C8B38752283F01D60066E04F /* CoreDataProjectModel.xcdatamodeld */; };
+		C8B38757283F06060066E04F /* Pais+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B38755283F06060066E04F /* Pais+CoreDataClass.swift */; };
+		C8B38758283F06060066E04F /* Pais+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B38756283F06060066E04F /* Pais+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		C8B3874A283EFF4C0066E04F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8B3874C283EFF4C0066E04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8B38753283F01D60066E04F /* CoreDataProjectModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataProjectModel.xcdatamodel; sourceTree = "<group>"; };
+		C8B38755283F06060066E04F /* Pais+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pais+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C8B38756283F06060066E04F /* Pais+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pais+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,8 @@
 		C8B38732283EFF490066E04F = {
 			isa = PBXGroup;
 			children = (
+				C8B38755283F06060066E04F /* Pais+CoreDataClass.swift */,
+				C8B38756283F06060066E04F /* Pais+CoreDataProperties.swift */,
 				C8B3873D283EFF490066E04F /* coreDataProject */,
 				C8B3873C283EFF490066E04F /* Products */,
 			);
@@ -144,6 +150,8 @@
 				C8B38754283F01D60066E04F /* CoreDataProjectModel.xcdatamodeld in Sources */,
 				C8B38743283EFF490066E04F /* ViewController.swift in Sources */,
 				C8B3873F283EFF490066E04F /* AppDelegate.swift in Sources */,
+				C8B38757283F06060066E04F /* Pais+CoreDataClass.swift in Sources */,
+				C8B38758283F06060066E04F /* Pais+CoreDataProperties.swift in Sources */,
 				C8B38741283EFF490066E04F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
